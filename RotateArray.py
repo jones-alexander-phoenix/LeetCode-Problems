@@ -15,4 +15,24 @@ rotate 2 steps to the right: [6,7,1,2,3,4,5]
 rotate 3 steps to the right: [5,6,7,1,2,3,4]
 """
 
+class Solution:
+    def __
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        nums_main = []
+        holder = 0
+        nums_main = nums.copy()
+        for i in range(len(nums)):
+            print(i)
+            holder = nums_main[i-k]
+            nums[i] = holder
+        return nums
+
+print(rotate([-1,-100,3,99], 2))
+
+
+
+
 
