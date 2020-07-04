@@ -5,7 +5,6 @@ import re
 
 def clean_matrix(matrix):
     p = re.compile('0*(0*1{1}0*2{1}0*)*0*')
-    print(matrix)
     buy_string = ''.join(str(i) for i in matrix)
     m = p.fullmatch(buy_string)
     if m:
@@ -18,14 +17,13 @@ def create_frameworks(values):
     matrix_length = len(values)
     matrix_values = ["0","1","2"]
     max_count = int(round(matrix_length/3))
-    zero_count = matrix_length % 3
     matrix_frameworks = []
     matrices = []
-    for i in range(0, max_count):
+    for i in range(0, max_count+1):
         if i == 0:
             pass
-        elif i > 1:
-            max_possible_values = matrix_values + ((i)*matrix_values)
+        elif i > 0:
+            max_possible_values = (i)*matrix_values
             if len(max_possible_values) < matrix_length:
                 max_possible_values = max_possible_values + (["0"] * (matrix_length - len(max_possible_values)))
             matrix_frameworks.append(max_possible_values)
@@ -59,10 +57,20 @@ def max_profit(prices):
     except ValueError:
         return 0
 
-prices =[1,4,2]
+prices =[3,2,6,5,0,3,5,6,10,2,13,15,16,20,10,2,1,45,2]
+
 print(max_profit(prices))
 
 
+#Solution
+
+
+def maxProfit(prices):
+    max_profit = 0
+    for i in range(0, len(prices)):
+        if prices[i] > prices[i-1]:
+            max_profit += prices[i] - prices[i-1]
+    return max_profit
 
 
 
